@@ -97,7 +97,7 @@ public class DataBase {
 
     public static void setTimes(){
         int rodada = 0;
-        for(int i=0; i<4; i++){
+        for(int i=0; i<potes.length; i++){
             for(int j=0; j<potes[i].tamanho(); j++){
                 Jogador w = potes[i].getJogador(j);
                 times[rodada].addJogador(w);
