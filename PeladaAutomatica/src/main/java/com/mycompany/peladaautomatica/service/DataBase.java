@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -49,7 +50,7 @@ public class DataBase {
     }
 
     public static void initializeTimes() {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < times.length; i++) {
             times[i] = new Time();
         }
     }
@@ -70,8 +71,8 @@ public class DataBase {
     }
 
     public static int setPote(int nota){
-        if(nota >= 9) return 0;
-        else if(nota >= 7) return 1;
+        if(nota >= 8) return 0;
+        else if(nota >= 6) return 1;
         else if(nota >= 4) return 2;
         else return 3;
     }
@@ -90,14 +91,27 @@ public class DataBase {
     }
 
     public static void setTimes(){
-        int rodada = 0;
-        for(int i=0; i<4; i++){
+        SecureRandom sc = new SecureRandom();
+        int rodada = sc.nextInt(times.length);
+        int aux = 0;
+
+        for(int i=0; i<potes.length; i++){
             for(int j=0; j<potes[i].tamanho(); j++){
+                if(times[rodada].getSize() == 5){
+                    rodada++;
+                    j--;
+                    if(rodada == 3) rodada = 0;
+                    continue;
+                }
                 Jogador w = potes[i].getJogador(j);
                 times[rodada].addJogador(w);
                 rodada++;
-                if(rodada == 3) rodada = 0;
-            }  
+                if(rodada == 3){
+                    rodada = aux;
+                    aux = 0;
+                }
+            }
+            aux = rodada;
         }
     }
 }

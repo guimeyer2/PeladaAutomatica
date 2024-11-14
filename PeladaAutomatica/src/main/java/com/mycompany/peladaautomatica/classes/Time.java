@@ -12,4 +12,8 @@ public class Time {
     public ArrayList<Jogador> getJogadores() {
         return jogadores;
     }
-}//teste
+
+    public int getSize(){
+        return jogadores.size();
+    }
+}
