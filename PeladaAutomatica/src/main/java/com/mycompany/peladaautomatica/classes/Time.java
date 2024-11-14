@@ -21,4 +21,7 @@ public class Time {
         return (double) soma / jogadores.size();
     }
     
+    public int getSize(){
+        return jogadores.size();
+    }
 }

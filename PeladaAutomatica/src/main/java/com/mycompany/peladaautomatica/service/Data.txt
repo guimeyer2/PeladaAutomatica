@@ -1,15 +1,15 @@
-meyer;9
-mdl;4
-brn;6
-pcl;1
+meyer;8
+mdl;5
+brn;7
+pcl;3
 hugo;5
-Gorilao;6
+gugu;3
 vtz;7
-Astro N;6
-Lukinhas;4
+Astro N;7
+Lukinhas;5
 Lopes;9
-LG;7
-Dioguedes;7
-caio;4
-Thiago;9
+Thiago;8
 miguel z;8
+allobis;3
+Calebe;7
+lugui;7
