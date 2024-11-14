@@ -12,4 +12,13 @@ public class Time {
     public ArrayList<Jogador> getJogadores() {
         return jogadores;
     }
-}//teste
+
+    public double Media() {
+        int soma = 0;
+        for (Jogador jogador : jogadores) {
+            soma += jogador.getNivel();
+        }
+        return (double) soma / jogadores.size();
+    }
+    
+}

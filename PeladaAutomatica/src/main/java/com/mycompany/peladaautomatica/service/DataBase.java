@@ -77,17 +77,23 @@ public class DataBase {
     }
 
     public static void printTime(){
-        for(int i=0; i<3; i++){
+        for(int i = 0; i < 3; i++){
             if(i == 0) System.out.println("Branco: ");
             else if(i == 1) System.out.println("Preto: ");
             else System.out.println("Azul: ");
+            
             ArrayList<Jogador> aux = times[i].getJogadores();
             for(Jogador w : aux){
                 System.out.println(w.getNome());
             }
+            
+        
+            double media = times[i].Media();
+            System.out.printf("Média: %.2f%n", media);
             System.out.println();
         }
     }
+    
 
     public static void setTimes(){
         int rodada = 0;
