@@ -6,35 +6,35 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.HashMap;
 
 import com.mycompany.peladaautomatica.classes.Jogador;
 import com.mycompany.peladaautomatica.classes.Pote;
 import com.mycompany.peladaautomatica.classes.Time;
 
 public class DataBase {
-    public static ArrayList<Jogador> peladeiros = new ArrayList<>();
+    public static HashMap<String, Jogador> peladeiros = new HashMap<String, Jogador>();
     public static Pote[] potes= new Pote[4];
     public static Time[] times = new Time[3];
 
     public static void readData() {
         Path filePath = Paths.get("PeladaAutomatica/src/main/java/com/mycompany/peladaautomatica/service/Data.txt").toAbsolutePath();
+        DataBase.initializePotes();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath.toString()))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] aux = line.split(";");
                 Integer x = Integer.parseInt(aux[1]);
                 Jogador jogador = new Jogador(aux[0], x);
-                peladeiros.add(jogador);
+                peladeiros.put(aux[0], jogador);
+
+                int index = setPote(x);
+                potes[index].addJogador(jogador);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        DataBase.ordenha();
-        DataBase.initializePotes();
-        DataBase.setPotes();
         for(int i=0; i<4; i++){
             potes[i].randomizacao();
         }
@@ -54,21 +54,6 @@ public class DataBase {
         }
     }
 
-    public static void ordenha() {
-        Collections.sort(peladeiros, new Comparator<Jogador>() {
-            public int compare(Jogador j1, Jogador j2) {
-                return Integer.compare(j2.getNivel(), j1.getNivel());
-            }
-        });
-    }
-
-    public static void setPotes(){
-        for(Jogador w : peladeiros){
-            int index = setPote(w.getNivel());
-            potes[index].addJogador(w);
-        }
-    }
-
     public static int setPote(int nota){
         if(nota >= 8) return 0;
         else if(nota >= 6) return 1;
@@ -77,7 +62,7 @@ public class DataBase {
     }
 
     public static void printTime(){
-        for(int i = 0; i < 3; i++){
+        for(int i = 0; i < times.length; i++){
             if(i == 0) System.out.println("Branco: ");
             else if(i == 1) System.out.println("Preto: ");
             else System.out.println("Azul: ");
