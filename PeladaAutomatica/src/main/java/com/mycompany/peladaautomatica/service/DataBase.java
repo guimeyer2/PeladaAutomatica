@@ -3,6 +3,8 @@ package com.mycompany.peladaautomatica.service;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -17,7 +19,8 @@ public class DataBase {
     public static Time[] times = new Time[3];
 
     public static void readData() {
-        try (BufferedReader br = new BufferedReader(new FileReader("Data.txt"))) {
+        Path filePath = Paths.get("PeladaAutomatica/src/main/java/com/mycompany/peladaautomatica/service/Data.txt").toAbsolutePath();
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath.toString()))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] aux = line.split(";");
