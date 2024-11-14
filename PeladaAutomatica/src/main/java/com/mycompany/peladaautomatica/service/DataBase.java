@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -97,8 +96,7 @@ public class DataBase {
     
 
     public static void setTimes(){
-        SecureRandom sc = new SecureRandom();
-        int rodada = sc.nextInt(times.length);
+        int rodada = 0;
         int aux = 0;
 
         for(int i=0; i<potes.length; i++){
