@@ -1,4 +1,4 @@
-package com.mycompany.peladaautomatica;
+package com.mycompany.peladaautomatica.pages;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
