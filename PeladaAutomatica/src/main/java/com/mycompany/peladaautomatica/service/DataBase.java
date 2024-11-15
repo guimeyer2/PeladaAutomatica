@@ -18,7 +18,7 @@ public class DataBase {
     public static Time[] times = new Time[3];
 
     public static void readData() {
-        Path filePath = Paths.get(".gitignore/Data.txt").toAbsolutePath();
+        Path filePath = Paths.get("PeladaAutomatica/src/main/java/com/mycompany/peladaautomatica/service/Data.txt").toAbsolutePath();
         DataBase.initializePotes();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath.toString()))) {
             String line;
