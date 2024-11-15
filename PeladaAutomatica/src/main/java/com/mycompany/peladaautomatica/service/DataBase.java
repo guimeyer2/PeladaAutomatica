@@ -93,6 +93,13 @@ public class DataBase {
             System.out.println();
         }
     }
+    public static double Media(Time time) {
+        int soma = 0;
+        for (Jogador jogador : time.getJogadores()) {
+            soma += jogador.getNivel();
+        }
+        return (double) soma / time.getJogadores().size();
+    }
     
 
     public static void setTimes(){
