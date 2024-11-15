@@ -7,7 +7,6 @@ public class PeladaAutomatica {
     public static void main(String[] args) {
         DataBase.readData();
         DataBase.printTime();
-        ////AAAAA
     }
 
 }
