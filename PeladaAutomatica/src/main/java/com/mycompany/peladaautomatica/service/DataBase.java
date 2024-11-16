@@ -38,10 +38,13 @@ public class DataBase {
         }
     }
 
-    public static void sorteio(ArrayList<Jogador> convocados){
+    public static void sorteio(ArrayList<Jogador> convocados, int n){
+        int tam;
+        if(convocados.size() == 12 || convocados.size() > 15) tam = 6;
+        else tam = 5;
         DataBase.setPotes(convocados);
         DataBase.randomizacao();
-        DataBase.setTimes();
+        DataBase.setTimes(n, tam);
     }
 
     public static void setPotes(ArrayList<Jogador> convocados){
@@ -137,22 +140,22 @@ public class DataBase {
         }
     }
 
-    public static void setTimes(){
+    public static void setTimes(int n, int tam){
         int rodada = 0;
         int aux = 0;
 
         for(int i=0; i<potes.length; i++){
             for(int j=0; j<potes[i].tamanho(); j++){
-                if(times[rodada].getSize() == 5){
+                if(times[rodada].getSize() == tam){
                     rodada++;
                     j--;
-                    if(rodada == 3) rodada = 0;
+                    if(rodada == n) rodada = 0;
                     continue;
                 }
                 Jogador w = potes[i].getJogador(j);
                 times[rodada].addJogador(w);
                 rodada++;
-                if(rodada == 3){
+                if(rodada == n){
                     rodada = aux;
                     aux = 0;
                 }

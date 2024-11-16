@@ -8,7 +8,5 @@ public class PeladaAutomatica {
         DataBase.readData();
         MainScreen tela = new MainScreen();
         tela.setVisible(true);
-        DataBase.printTime();
     }
-
 }

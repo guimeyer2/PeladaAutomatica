@@ -136,11 +136,12 @@ public class MainScreen extends javax.swing.JFrame {
     
         for (String nome : nomes) {
             if(nome == null) continue;
-            nome = nome.toLowerCase();
-            nome = nome.replace("-", "");
-            nome = nome.trim();
+            String aux[] = nome.split("-"); //aux 1 = nome do jogador após o hifen (entrada normalmente ou é "1- joaoz" ou "- joaoz")
+            aux[1] = aux[1].toLowerCase();
+            aux[1] = aux[1].replace("-", "");
+            aux[1] = aux[1].trim();
             try{
-                Jogador w = DataBase.getJogador(nome);
+                Jogador w = DataBase.getJogador(aux[1]);
                 convocados.add(w);
             }catch(JogadorNaoEncontradoException e){
                 boolean notaValida = false;
@@ -155,16 +156,16 @@ public class MainScreen extends javax.swing.JFrame {
                     }
                 }
                 int nota = Integer.parseInt(snota);
-                Jogador w = new Jogador(nome, nota);
-                DataBase.addJogador(nome, w);
+                Jogador w = new Jogador(aux[1], nota);
+                DataBase.addJogador(aux[1], w);
                 convocados.add(w);
-                DataBase.updateData(nome, nota);
+                DataBase.updateData(aux[1], nota);
             }
         }
         
-        DataBase.sorteio(convocados);
+        DataBase.sorteio(convocados, 2);
         DataBase.printTime();
-        TeamsPage teams = new TeamsPage(3);
+        TeamsScreen teams = new TeamsScreen(2);
         teams.setVisible(true);
     }                                             
 
