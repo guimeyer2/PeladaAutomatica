@@ -5,11 +5,11 @@ pcl;3
 hugo;5
 gugu;3
 vtz;7
-Astro N;7
-Lukinhas;5
-Lopes;9
-Thiago;8
+astro n;7
+lukinhas;5
+lopes;9
+thiago;8
 miguel z;8
-allobis;3
-Calebe;7
+allobis;5
+calebe;7
 lugui;7

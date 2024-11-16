@@ -1,7 +1,9 @@
 package com.mycompany.peladaautomatica.service;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -11,15 +13,18 @@ import java.util.HashMap;
 import com.mycompany.peladaautomatica.classes.Jogador;
 import com.mycompany.peladaautomatica.classes.Pote;
 import com.mycompany.peladaautomatica.classes.Time;
+import com.mycompany.peladaautomatica.exceptions.JogadorNaoEncontradoException;
+import com.mycompany.peladaautomatica.exceptions.NotaInvalidaException;
 
 public class DataBase {
     public static HashMap<String, Jogador> peladeiros = new HashMap<String, Jogador>();
-    public static Pote[] potes= new Pote[4];
+    public static Pote[] potes= new Pote[10];
     public static Time[] times = new Time[3];
 
     public static void readData() {
         Path filePath = Paths.get("PeladaAutomatica/src/main/java/com/mycompany/peladaautomatica/service/Data.txt").toAbsolutePath();
         DataBase.initializePotes();
+        DataBase.initializeTimes();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath.toString()))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -27,19 +32,29 @@ public class DataBase {
                 Integer x = Integer.parseInt(aux[1]);
                 Jogador jogador = new Jogador(aux[0], x);
                 peladeiros.put(aux[0], jogador);
-
-                int index = setPote(x);
-                potes[index].addJogador(jogador);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
-        for(int i=0; i<4; i++){
+    public static void sorteio(ArrayList<Jogador> convocados){
+        DataBase.setPotes(convocados);
+        DataBase.randomizacao();
+        DataBase.setTimes();
+    }
+
+    public static void setPotes(ArrayList<Jogador> convocados){
+        for(Jogador w : convocados){
+            int index = setPote(w.getNivel());
+            potes[index].addJogador(w);
+        }
+    }
+
+    public static void randomizacao(){
+        for(int i=0; i<potes.length; i++){
             potes[i].randomizacao();
         }
-        DataBase.initializeTimes();
-        DataBase.setTimes();
     }
 
     public static void initializePotes() {
@@ -78,7 +93,49 @@ public class DataBase {
             System.out.println();
         }
     }
+
+    public static double Media(Time time) {
+        int soma = 0;
+        for (Jogador jogador : time.getJogadores()) {
+            soma += jogador.getNivel();
+        }
+        return (double) soma / time.getJogadores().size();
+    }
     
+    public static Jogador getJogador(String nome) throws JogadorNaoEncontradoException{
+        Jogador w = peladeiros.get(nome);
+        if (w == null) {
+            throw new JogadorNaoEncontradoException(nome);
+        }
+        return peladeiros.get(nome);
+    }
+
+    public static void addJogador(String nome, Jogador w){
+        peladeiros.put(nome, w);
+    }
+
+    public static void updateData(String nome, int nota){
+        Path filePath = Paths.get("PeladaAutomatica/src/main/java/com/mycompany/peladaautomatica/service/Data.txt").toAbsolutePath();
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath.toString(), true))) {
+            writer.write(nome + ";" + nota);
+            writer.newLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }   
+    }
+
+    public static boolean notaValida(String s) throws NotaInvalidaException{
+        try {
+            int nota = Integer.parseInt(s);
+            if (nota >= 1 && nota <= 10) {
+                return true;
+            } else {
+                throw new NotaInvalidaException();
+            }
+        } catch (NumberFormatException e) {
+            throw new NotaInvalidaException();
+        }
+    }
 
     public static void setTimes(){
         int rodada = 0;
@@ -103,4 +160,5 @@ public class DataBase {
             aux = rodada;
         }
     }
+
 }
