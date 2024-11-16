@@ -43,8 +43,6 @@ public class DataBase {
         DataBase.setPotes(convocados);
         DataBase.randomizacao();
         DataBase.setTimes(n, tam);
-        System.out.println("#####");
-        System.out.println();
     }
 
     public static void setPotes(ArrayList<Jogador> convocados){
