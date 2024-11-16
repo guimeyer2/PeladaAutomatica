@@ -24,4 +24,8 @@ public class Time {
     public int getSize(){
         return jogadores.size();
     }
+
+    public void setJogadores(ArrayList<Jogador> j){
+        jogadores = j;
+    }
 }

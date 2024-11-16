@@ -38,4 +38,8 @@ public class Pote {
         Jogador j = jogadores.get(index);
         return j;
     }
+
+    public void setJogadores(ArrayList<Jogador> j){
+        jogadores = j;
+    }
 }

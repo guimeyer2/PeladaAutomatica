@@ -23,8 +23,6 @@ public class DataBase {
 
     public static void readData() {
         Path filePath = Paths.get("PeladaAutomatica/src/main/java/com/mycompany/peladaautomatica/service/Data.txt").toAbsolutePath();
-        DataBase.initializePotes();
-        DataBase.initializeTimes();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath.toString()))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -45,9 +43,12 @@ public class DataBase {
         DataBase.setPotes(convocados);
         DataBase.randomizacao();
         DataBase.setTimes(n, tam);
+        System.out.println("#####");
+        System.out.println();
     }
 
     public static void setPotes(ArrayList<Jogador> convocados){
+        DataBase.initializePotes();
         for(Jogador w : convocados){
             int index = setPote(w.getNivel());
             potes[index].addJogador(w);
@@ -79,8 +80,8 @@ public class DataBase {
         else return 3;
     }
 
-    public static void printTime(){
-        for(int i = 0; i < times.length; i++){
+    public static void printTime(int n){
+        for(int i = 0; i < n; i++){
             if(i == 0) System.out.println("Branco: ");
             else if(i == 1) System.out.println("Preto: ");
             else System.out.println("Azul: ");
@@ -141,6 +142,7 @@ public class DataBase {
     }
 
     public static void setTimes(int n, int tam){
+        DataBase.initializeTimes();
         int rodada = 0;
         int aux = 0;
 
@@ -163,5 +165,4 @@ public class DataBase {
             aux = rodada;
         }
     }
-
 }
