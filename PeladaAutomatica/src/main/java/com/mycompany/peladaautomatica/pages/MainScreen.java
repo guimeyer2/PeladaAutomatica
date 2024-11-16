@@ -47,19 +47,14 @@ public class MainScreen extends javax.swing.JFrame {
 
         tglTimes.setFont(new java.awt.Font("Ubuntu Mono", 1, 24)); // NOI18N
         tglTimes.setText("2");
-        tglTimes.setBackground(new java.awt.Color(100, 149, 237)); // Azul claro
+        tglTimes.setBackground(new java.awt.Color(100, 149, 237)); 
+        tglTimes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tglTimes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tglTimesActionPerformed(evt);
             }
         });
-        if(tglTimes.isSelected()){
-            tglTimes.setText("3");
-            tglTimes.setBackground(new java.awt.Color(255, 102, 102)); // Vermelho claro
-        }else{
-            tglTimes.setText("2");
-            tglTimes.setBackground(new java.awt.Color(100, 149, 237)); // Azul claro
-        }
+        
 
         lblTimes.setFont(new java.awt.Font("Ubuntu Sans Mono", 1, 18)); // NOI18N
         lblTimes.setText("TIMES");
@@ -67,6 +62,7 @@ public class MainScreen extends javax.swing.JFrame {
         btnSortear.setBackground(new java.awt.Color(154, 205, 50));
         btnSortear.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         btnSortear.setText("Sortear");
+        btnSortear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSortear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSortearActionPerformed(evt);
