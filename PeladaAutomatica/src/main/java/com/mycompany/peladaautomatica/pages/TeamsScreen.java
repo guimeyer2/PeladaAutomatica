@@ -18,9 +18,6 @@ import com.mycompany.peladaautomatica.service.DataBase;
  */
 public class TeamsScreen extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TeamsScreen
-     */
     public TeamsScreen(int n) {
         initComponents(n);
         setLocationRelativeTo(null);
@@ -44,13 +41,13 @@ public class TeamsScreen extends javax.swing.JFrame {
         txtPreto.setEditable(false);
         txtAzul.setEditable(false);
 
-        txtBranco.setFont(new java.awt.Font("Liberation Sans", 2, 15)); // NOI18N
+        txtBranco.setFont(new java.awt.Font("Liberation Sans", 2, 18)); // NOI18N
         jScrollPane1.setViewportView(txtBranco);
 
-        txtPreto.setFont(new java.awt.Font("Liberation Sans", 2, 15)); // NOI18N
+        txtPreto.setFont(new java.awt.Font("Liberation Sans", 2, 18)); // NOI18N
         jScrollPane2.setViewportView(txtPreto);
 
-        txtAzul.setFont(new java.awt.Font("Liberation Sans", 2, 15)); // NOI18N
+        txtAzul.setFont(new java.awt.Font("Liberation Sans", 2, 18)); // NOI18N
         jScrollPane3.setViewportView(txtAzul);
 
         lblBranco.setFont(new java.awt.Font("Dhurjati", 0, 36)); // NOI18N
@@ -172,10 +169,8 @@ public class TeamsScreen extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TeamsScreen(0).setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new TeamsScreen(0).setVisible(true);
         });
     }
 
