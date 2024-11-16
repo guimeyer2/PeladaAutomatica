@@ -5,8 +5,6 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
 import com.mycompany.peladaautomatica.classes.Jogador;
 import com.mycompany.peladaautomatica.service.DataBase;
 
@@ -45,7 +43,6 @@ public class TeamsPage extends javax.swing.JFrame {
             StringSelection stringSelection = new StringSelection(text);
             Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
             clipboard.setContents(stringSelection, null);
-            JOptionPane.showMessageDialog(null, "Texto copiado para a área de transferência!");
             }
         });
 
