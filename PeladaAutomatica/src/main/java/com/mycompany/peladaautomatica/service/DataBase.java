@@ -72,8 +72,8 @@ public class DataBase {
     }
 
     public static int setPote(int nota){
-        if(nota >= 8) return 0;
-        else if(nota >= 6) return 1;
+        if(nota >= 9) return 0;
+        else if(nota >= 7) return 1;
         else if(nota >= 4) return 2;
         else return 3;
     }
