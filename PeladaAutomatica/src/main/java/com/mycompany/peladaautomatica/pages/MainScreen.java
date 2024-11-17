@@ -132,6 +132,7 @@ public class MainScreen extends javax.swing.JFrame {
         for (String nome : nomes) {
             if(nome == null) continue;
             String aux[] = nome.split("-"); //aux 1 = nome do jogador após o hifen (entrada normalmente ou é "1- joaoz" ou "- joaoz")
+            if(aux.length == 1) continue;
             aux[1] = aux[1].toLowerCase();
             aux[1] = aux[1].replace("-", "");
             aux[1] = aux[1].trim();
