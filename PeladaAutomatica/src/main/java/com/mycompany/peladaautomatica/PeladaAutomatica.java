@@ -9,4 +9,5 @@ public class PeladaAutomatica {
         MainScreen tela = new MainScreen();
         tela.setVisible(true);
     }
+    ///teste
 }
