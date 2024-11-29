@@ -17,3 +17,12 @@ mef;7
 thiago (22:30+);8
 gorilao cabas;9
 furst;10
+pet;8
+astronauta;6
+rmpa;7
+lg;7
+caleb;7
+caio;4
+tpcl;2
+rafa;4
+biglee;6

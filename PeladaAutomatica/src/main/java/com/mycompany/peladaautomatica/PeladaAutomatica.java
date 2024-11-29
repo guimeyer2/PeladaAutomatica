@@ -10,3 +10,4 @@ public class PeladaAutomatica {
         tela.setVisible(true);
     }
 }
+ 
